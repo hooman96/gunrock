@@ -6,8 +6,8 @@ from ctypes import *
 gunrock = cdll.LoadLibrary('../build/lib/libgunrock.so')
 
 ### read in input CSR arrays from files
-row_list = [int(x.strip()) for x in open('toy_graph/row.txt')]
-col_list = [int(x.strip()) for x in open('toy_graph/col.txt')]
+row_list = [int(x) for x in genfromtxt('toy_graph/row.txt')]
+col_list = [int(x) for x in genfromtxt('toy_graph/col.txt')]
 
 ### convert CSR graph inputs for gunrock input
 row = pointer((c_int * len(row_list))(*row_list))
